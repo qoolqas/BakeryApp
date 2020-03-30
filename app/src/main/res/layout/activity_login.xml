@@ -19,7 +19,7 @@
             android:layout_height="128dp"
             android:layout_marginTop="32dp"
             android:contentDescription="@string/logo"
-            android:src="@drawable/ic_box"
+            android:src="@drawable/ic_bakery"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -29,7 +29,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="@string/inventory"
+            android:text="@string/bakery"
             android:textAlignment="center"
             android:textColor="@color/black"
             android:textSize="24sp"
@@ -131,20 +131,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/loginEtPassword" />
 
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="32dp"
-            android:layout_marginEnd="16dp"
-            android:fontFamily="@font/roboto_regular"
-            android:text="@string/pt_phos_tekno"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/loginButtonLogin"
-            app:layout_constraintVertical_bias="1.0" />
+
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/loginLoading"
