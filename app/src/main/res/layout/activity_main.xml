@@ -26,7 +26,7 @@
                 android:id="@+id/view"
                 android:layout_width="match_parent"
                 android:layout_height="220dp"
-                android:background="#7965FF">
+                android:background="@color/colorPrimaryDark">
 
             </View>
 
