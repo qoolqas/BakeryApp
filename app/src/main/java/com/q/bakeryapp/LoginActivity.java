@@ -18,11 +18,12 @@ public class LoginActivity extends AppCompatActivity {
     Button btnLogin;
     ProgressDialog loading;
     Context mContext = this;
+    SharedPrefManager sharedPrefManager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
+        sharedPrefManager = new SharedPrefManager(this);
         initComponents();
 
     }
@@ -38,6 +39,7 @@ public class LoginActivity extends AppCompatActivity {
                 if (!validateName() | !validatePassword()) {
                     return;
                 }
+                sharedPrefManager.saveName(SharedPrefManager.SP_NAME, Objects.requireNonNull(etNama.getEditText()).getText().toString().trim());
                 loading = ProgressDialog.show(mContext, null, "Harap Tunggu...", true, false);
                 startActivity(new Intent(LoginActivity.this, MainActivity.class));
 
