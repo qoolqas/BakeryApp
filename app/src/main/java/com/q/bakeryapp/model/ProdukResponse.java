@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName;
 import java.util.List;
 
 public class ProdukResponse {
-    @SerializedName("data")
+    @SerializedName("result")
     private List<ProdukModel> data;
 
     public List<ProdukModel> getData() {
