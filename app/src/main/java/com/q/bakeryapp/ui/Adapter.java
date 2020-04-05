@@ -1,5 +1,7 @@
 package com.q.bakeryapp.ui;
 
+import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,15 +11,26 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.q.bakeryapp.DetailActivity;
 import com.q.bakeryapp.R;
 import com.q.bakeryapp.model.ProdukModel;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
-    private ArrayList<ProdukModel> list;
-    public Adapter(ArrayList<ProdukModel> dataList) {
-        this.list = dataList;
+    private ProdukActivity produkActivity;
+    private Context context;
+    private List<ProdukModel> list;
+
+    public Adapter(ProdukActivity produkActivity, Context context) {
+        this.produkActivity = produkActivity;
+        this.context = context;
+    }
+
+    public void setProduk(List<ProdukModel> dataGets) {
+        this.list = dataGets;
+        notifyDataSetChanged();
     }
 
     @NonNull
@@ -32,16 +45,16 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
     public void onBindViewHolder(@NonNull Adapter.ViewHolder holder, int position) {
         holder.nama.setText(list.get(position).getNama());
         holder.harga.setText(list.get(position).getHarga());
-        holder.rating.setRating(Float.parseFloat(list.get(position).getRating()));
+        holder.rating.setRating(Float.parseFloat(list.get(position).getRating())/2);
 
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return list.size();
     }
 
-    public static class ViewHolder extends RecyclerView.ViewHolder {
+    public class ViewHolder extends RecyclerView.ViewHolder {
         private TextView nama, harga;
         private RatingBar rating;
 
@@ -50,6 +63,20 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
             nama = itemView.findViewById(R.id.nama);
             harga = itemView.findViewById(R.id.harga);
             rating = itemView.findViewById(R.id.ratingBar);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    int position = getAdapterPosition();
+                    if (position != RecyclerView.NO_POSITION) {
+                        ProdukModel data = list.get(position);
+                        Intent intent = new Intent(view.getContext(), DetailActivity.class);
+                        intent.putExtra("data", data);
+                        view.getContext().startActivity(intent);
+
+                    }
+                }
+            });
         }
     }
 }
