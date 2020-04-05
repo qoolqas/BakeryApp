@@ -4,15 +4,15 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-public class BakeryResponse {
+public class ProdukResponse {
     @SerializedName("data")
-    private List<BakeryModel> data;
+    private List<ProdukModel> data;
 
-    public List<BakeryModel> getData() {
+    public List<ProdukModel> getData() {
         return data;
     }
 
-    public void setData(List<BakeryModel> data) {
+    public void setData(List<ProdukModel> data) {
         this.data = data;
     }
 }

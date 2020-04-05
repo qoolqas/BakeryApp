@@ -1,20 +1,22 @@
-package com.q.bakeryapp;
+package com.q.bakeryapp.ui;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.q.bakeryapp.model.BakeryModel;
+import com.q.bakeryapp.R;
+import com.q.bakeryapp.model.ProdukModel;
 
 import java.util.ArrayList;
 
 public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
-    private ArrayList<BakeryModel> list;
-    public Adapter(ArrayList<BakeryModel> dataList) {
+    private ArrayList<ProdukModel> list;
+    public Adapter(ArrayList<ProdukModel> dataList) {
         this.list = dataList;
     }
 
@@ -30,6 +32,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
     public void onBindViewHolder(@NonNull Adapter.ViewHolder holder, int position) {
         holder.nama.setText(list.get(position).getNama());
         holder.harga.setText(list.get(position).getHarga());
+        holder.rating.setRating(Float.parseFloat(list.get(position).getRating()));
 
     }
 
@@ -39,12 +42,14 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        private TextView nama, harga, rating;
+        private TextView nama, harga;
+        private RatingBar rating;
 
         ViewHolder(@NonNull View itemView) {
             super(itemView);
             nama = itemView.findViewById(R.id.nama);
             harga = itemView.findViewById(R.id.harga);
+            rating = itemView.findViewById(R.id.ratingBar);
         }
     }
 }

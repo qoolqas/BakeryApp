@@ -1,6 +1,7 @@
 package com.q.bakeryapp.connection;
 
-import com.q.bakeryapp.model.BakeryModel;
+import com.q.bakeryapp.model.ProdukModel;
+import com.q.bakeryapp.model.ProdukResponse;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
@@ -8,8 +9,8 @@ import retrofit2.http.GET;
 public interface Service {
 
 
-    @GET("allData")
-    Call<BakeryModel> getAll();
+    @GET("read.php")
+    Call<ProdukResponse> getProduk();
 
 
 
