@@ -47,7 +47,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
                         android:layout_marginBottom="10dp"
-                        android:text="Talent Manager"
+                        android:text="Kategori"
                         android:textAlignment="center"
                         android:textColor="#000"
                         android:textSize="14sp"/>
@@ -55,7 +55,7 @@
             </FrameLayout>
         </androidx.cardview.widget.CardView>
         <androidx.cardview.widget.CardView
-            android:id="@+id/manage"
+            android:id="@+id/cardRekomendasi"
             android:layout_width="150dp"
             android:layout_height="150dp"
             android:layout_margin="5dp"
@@ -85,7 +85,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
                         android:layout_marginBottom="10dp"
-                        android:text="Manage Project"
+                        android:text="Rekomendasi"
                         android:textAlignment="center"
                         android:textColor="#000"
                         android:textSize="14sp" />
@@ -130,7 +130,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
                         android:layout_marginBottom="10dp"
-                        android:text="Building Standards"
+                        android:text="Pengirim"
                         android:textAlignment="center"
                         android:textColor="#000"
                         android:textSize="14sp"/>
@@ -168,7 +168,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
                         android:layout_marginBottom="10dp"
-                        android:text="Sewa Alat"
+                        android:text="Lokasi Toko"
                         android:textAlignment="center"
                         android:textColor="#000"
                         android:textSize="14sp" />

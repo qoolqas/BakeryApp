@@ -5,17 +5,19 @@ import android.os.Parcelable;
 
 import com.google.gson.annotations.SerializedName;
 
-public class BakeryModel implements Parcelable {
+public class ProdukModel implements Parcelable {
 
-    @SerializedName("gambar")
+    @SerializedName("produk_id")
+    private String id;
+    @SerializedName("nama")
     private String nama;
     @SerializedName("gambar")
     private String path;
-    @SerializedName("gambar")
+    @SerializedName("rating")
     private String rating;
-    @SerializedName("gambar")
-    private String harga;
-    @SerializedName("gambar")
+    @SerializedName("harga")
+    private int harga;
+    @SerializedName("deskripsi")
     private String deskripsi;
 
     public String getNama() {
@@ -42,11 +44,11 @@ public class BakeryModel implements Parcelable {
         this.rating = rating;
     }
 
-    public String getHarga() {
+    public int getHarga() {
         return harga;
     }
 
-    public void setHarga(String harga) {
+    public void setHarga(int harga) {
         this.harga = harga;
     }
 
@@ -58,7 +60,7 @@ public class BakeryModel implements Parcelable {
         this.deskripsi = deskripsi;
     }
 
-    public BakeryModel(String nama, String path, String rating, String harga, String deskripsi) {
+    public ProdukModel(String nama, String path, String rating, int harga, String deskripsi) {
         this.nama = nama;
         this.path = path;
         this.rating = rating;
@@ -68,11 +70,11 @@ public class BakeryModel implements Parcelable {
 
 
 
-    protected BakeryModel(Parcel in) {
+    protected ProdukModel(Parcel in) {
         nama = in.readString();
         path = in.readString();
         rating = in.readString();
-        harga = in.readString();
+        harga = in.readInt();
         deskripsi = in.readString();
     }
 
@@ -81,7 +83,7 @@ public class BakeryModel implements Parcelable {
         dest.writeString(nama);
         dest.writeString(path);
         dest.writeString(rating);
-        dest.writeString(harga);
+        dest.writeInt(harga);
         dest.writeString(deskripsi);
     }
 
@@ -90,15 +92,15 @@ public class BakeryModel implements Parcelable {
         return 0;
     }
 
-    public static final Creator<BakeryModel> CREATOR = new Creator<BakeryModel>() {
+    public static final Creator<ProdukModel> CREATOR = new Creator<ProdukModel>() {
         @Override
-        public BakeryModel createFromParcel(Parcel in) {
-            return new BakeryModel(in);
+        public ProdukModel createFromParcel(Parcel in) {
+            return new ProdukModel(in);
         }
 
         @Override
-        public BakeryModel[] newArray(int size) {
-            return new BakeryModel[size];
+        public ProdukModel[] newArray(int size) {
+            return new ProdukModel[size];
         }
     };
 }
