@@ -24,7 +24,7 @@ public class ProdukActivity extends AppCompatActivity {
     private Adapter adapter;
     private LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
     private ProgressBar pb;
-    private ArrayList<ProdukModel> produk = new ArrayList<>();
+    private List<ProdukModel> produk = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +32,8 @@ public class ProdukActivity extends AppCompatActivity {
         setContentView(R.layout.activity_product);
 
         viewModel = ViewModelProviders.of(this).get(ViewModel.class);
-        adapter = new Adapter(produk);
+        adapter = new Adapter(this, this);
+        adapter.setProduk(produk);
         recyclerView = findViewById(R.id.rv);
         pb = findViewById(R.id.pb);
         initRV();
@@ -44,11 +45,11 @@ public class ProdukActivity extends AppCompatActivity {
 
         viewModel.liveGet().observe(this, new Observer<ProdukResponse>() {
             @Override
-            public void onChanged(ProdukResponse divisiGetResponse) {
+            public void onChanged(ProdukResponse produkResponse) {
 
                 try {
                     produk.clear();
-                    produk.addAll(divisiGetResponse.getData());
+                    produk.addAll(produkResponse.getData());
                     recyclerView.setAdapter(adapter);
                     adapter.notifyDataSetChanged();
                     pb.setVisibility(View.GONE);

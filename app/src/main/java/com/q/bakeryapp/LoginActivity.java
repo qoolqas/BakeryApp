@@ -16,7 +16,6 @@ import java.util.Objects;
 public class LoginActivity extends AppCompatActivity {
     TextInputLayout etNama, etPassword;
     Button btnLogin;
-    ProgressDialog loading;
     Context mContext = this;
     SharedPrefManager sharedPrefManager;
     @Override
@@ -40,8 +39,10 @@ public class LoginActivity extends AppCompatActivity {
                     return;
                 }
                 sharedPrefManager.saveName(SharedPrefManager.SP_NAME, Objects.requireNonNull(etNama.getEditText()).getText().toString().trim());
-                loading = ProgressDialog.show(mContext, null, "Harap Tunggu...", true, false);
-                startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                Intent intent = new Intent(LoginActivity.this, MainActivity.class)
+                        .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+
 
 
             }
