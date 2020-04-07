@@ -14,10 +14,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:targetApi="n">
-        <activity android:name=".PembayaranActivity"
-            android:theme="@style/AppTheme.Material">
-
-        </activity>
+        <activity android:name=".ProfileActivity"></activity>
+        <activity
+            android:name=".PembayaranActivity"
+            android:theme="@style/AppTheme.Material"></activity>
         <activity android:name=".ui.ProdukActivity" />
         <activity android:name=".DetailActivity" />
         <activity
