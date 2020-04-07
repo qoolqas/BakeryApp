@@ -32,7 +32,7 @@
 
             <TextView
                 android:id="@+id/name"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="16dp"
                 android:layout_marginTop="20dp"
@@ -41,6 +41,17 @@
                 android:textColor="#fff"
                 android:textSize="30sp"
                 android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/button_profile"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_alignParentEnd="true"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="16dp"
+                android:padding="8dp"
+                android:src="@drawable/ic_person_black_24dp" />
 
             <include
                 android:id="@+id/shimmer_grid"
