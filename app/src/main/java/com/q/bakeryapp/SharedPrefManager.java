@@ -23,5 +23,9 @@ public class SharedPrefManager {
     public String getSpName() {
         return sp.getString(SP_NAME, "token");
     }
+    public  void clear(){
+        spEditor.clear();
+        spEditor.apply();
+    }
 
 }
