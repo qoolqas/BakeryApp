@@ -26,26 +26,16 @@ public class ProdukModel implements Parcelable {
     @SerializedName("produk_id")
     private String produkId;
 
-    protected ProdukModel(Parcel in) {
-        nama = in.readString();
-        harga = in.readString();
-        rating = in.readString();
-        kategori = in.readString();
-        deskripsi = in.readString();
-        produkId = in.readString();
+    @SerializedName("foto")
+    private String foto;
+    public String getFoto() {
+        return foto;
     }
 
-    public static final Creator<ProdukModel> CREATOR = new Creator<ProdukModel>() {
-        @Override
-        public ProdukModel createFromParcel(Parcel in) {
-            return new ProdukModel(in);
-        }
+    public void setFoto(String foto) {
+        this.foto = foto;
+    }
 
-        @Override
-        public ProdukModel[] newArray(int size) {
-            return new ProdukModel[size];
-        }
-    };
 
     public String getNama() {
         return nama;
@@ -110,12 +100,35 @@ public class ProdukModel implements Parcelable {
     }
 
     @Override
-    public void writeToParcel(Parcel parcel, int i) {
-        parcel.writeString(nama);
-        parcel.writeString(harga);
-        parcel.writeString(rating);
-        parcel.writeString(kategori);
-        parcel.writeString(deskripsi);
-        parcel.writeString(produkId);
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(this.nama);
+        dest.writeString(this.harga);
+        dest.writeString(this.rating);
+        dest.writeString(this.kategori);
+        dest.writeString(this.deskripsi);
+        dest.writeString(this.produkId);
+        dest.writeString(this.foto);
     }
+
+    protected ProdukModel(Parcel in) {
+        this.nama = in.readString();
+        this.harga = in.readString();
+        this.rating = in.readString();
+        this.kategori = in.readString();
+        this.deskripsi = in.readString();
+        this.produkId = in.readString();
+        this.foto = in.readString();
+    }
+
+    public static final Creator<ProdukModel> CREATOR = new Creator<ProdukModel>() {
+        @Override
+        public ProdukModel createFromParcel(Parcel source) {
+            return new ProdukModel(source);
+        }
+
+        @Override
+        public ProdukModel[] newArray(int size) {
+            return new ProdukModel[size];
+        }
+    };
 }
