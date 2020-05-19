@@ -1,8 +1,8 @@
-package com.q.bakeryapp.model;
+package com.q.bakeryapp.model.login;
 
 import com.google.gson.annotations.SerializedName;
 
-public class User{
+public class UserLogin {
 
 	@SerializedName("nama")
 	private String nama;

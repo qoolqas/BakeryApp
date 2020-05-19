@@ -1,14 +1,13 @@
-package com.q.bakeryapp.model;
+package com.q.bakeryapp.model.login;
 
 import com.google.gson.annotations.SerializedName;
-
-public class RegisterResponse{
+public class LoginResponse{
 
 	@SerializedName("error")
 	private boolean error;
 
 	@SerializedName("user")
-	private User user;
+	private UserLogin user;
 
 	public void setError(boolean error){
 		this.error = error;
@@ -18,18 +17,18 @@ public class RegisterResponse{
 		return error;
 	}
 
-	public void setUser(User user){
+	public void setUser(UserLogin user){
 		this.user = user;
 	}
 
-	public User getUser(){
+	public UserLogin getUser(){
 		return user;
 	}
 
 	@Override
  	public String toString(){
 		return 
-			"RegisterResponse{" + 
+			"LoginResponse{" + 
 			"error = '" + error + '\'' + 
 			",user = '" + user + '\'' + 
 			"}";
