@@ -11,7 +11,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.google.android.material.appbar.CollapsingToolbarLayout;
-import com.q.bakeryapp.model.ProdukModel;
+import com.q.bakeryapp.model.produk.ProdukModel;
 
 public class DetailActivity extends AppCompatActivity {
     ProdukModel produkModel;

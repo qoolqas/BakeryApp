@@ -1,4 +1,4 @@
-package com.q.bakeryapp.model;
+package com.q.bakeryapp.model.produk;
 
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -28,6 +28,7 @@ public class ProdukModel implements Parcelable {
 
     @SerializedName("foto")
     private String foto;
+
     public String getFoto() {
         return foto;
     }

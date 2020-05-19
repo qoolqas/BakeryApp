@@ -1,25 +1,36 @@
 package com.q.bakeryapp;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
 import com.google.android.material.textfield.TextInputLayout;
+import com.q.bakeryapp.connection.Client;
+import com.q.bakeryapp.connection.Service;
+import com.q.bakeryapp.model.login.LoginResponse;
 
 import java.util.Objects;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class LoginActivity extends AppCompatActivity {
-    TextInputLayout etNama, etPassword;
+    TextInputLayout etEmail, etPassword;
     Button btnLogin;
     TextView register;
     Context mContext = this;
     SharedPrefManager sharedPrefManager;
+    ProgressDialog loading;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,7 +48,7 @@ public class LoginActivity extends AppCompatActivity {
 
     }
     private void initComponents(){
-        etNama = findViewById(R.id.loginEtName);
+        etEmail = findViewById(R.id.loginEtName);
         etPassword =  findViewById(R.id.loginEtPassword);
         btnLogin = findViewById(R.id.loginButtonLogin);
 
@@ -48,7 +59,8 @@ public class LoginActivity extends AppCompatActivity {
                 if (!validateName() | !validatePassword()) {
                     return;
                 }
-                sharedPrefManager.saveName(SharedPrefManager.SP_NAME, Objects.requireNonNull(etNama.getEditText()).getText().toString().trim());
+                loading = ProgressDialog.show(mContext, null, "Harap Tunggu...", true, false);
+                sharedPrefManager.saveName(SharedPrefManager.SP_NAME, Objects.requireNonNull(etEmail.getEditText()).getText().toString().trim());
                 Intent intent = new Intent(LoginActivity.this, MainActivity.class)
                         .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
@@ -60,14 +72,59 @@ public class LoginActivity extends AppCompatActivity {
         });
 
     }
+    private void requestLogin(){
+        Client.getClient().create(Service.class).loginRequest(etEmail.getEditText().getText().toString(), etPassword.getEditText().getText().toString())
+                .enqueue(new Callback<LoginResponse>()
+                {
+
+                    @Override
+                    public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
+                        if (response.isSuccessful()){
+                            loading.dismiss();
+                            LoginResponse loginResponse = response.body();
+
+//                            sharedPrefManager.saveToken(SharedPrefManager.SP_TOKEN,loginResponse.getToken());
+//                            sharedPrefManager.getSpToken();
+
+//                            sharedPrefManager.saveSPBoolean(SharedPrefManager.SP_SUDAH_LOGIN, true);
+                            Intent intent = new Intent(LoginActivity.this, MainActivity.class)
+                                    .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+                            startActivity(intent);
+                        } else {
+                            AlertDialog.Builder dlgAlert  = new AlertDialog.Builder(mContext);
+
+                            dlgAlert.setMessage("Mohon Periksa Kembali");
+                            dlgAlert.setTitle("Email Atau Password Anda Salah");
+                            dlgAlert.setPositiveButton("OK", null);
+                            dlgAlert.setCancelable(true);
+                            dlgAlert.create().show();
+
+
+                            dlgAlert.setPositiveButton("Ok",
+                                    new DialogInterface.OnClickListener() {
+                                        public void onClick(DialogInterface dialog, int which) {
+
+                                        }
+                                    });
+                            loading.dismiss();
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<LoginResponse> call, Throwable t) {
+                        Log.e("debug", "onFailure: ERROR > " + t.toString());
+                        loading.dismiss();
+                    }
+                });
+    }
     private boolean validateName() {
-        String email = (Objects.requireNonNull(etNama.getEditText())).getText().toString().trim();
+        String email = (Objects.requireNonNull(etEmail.getEditText())).getText().toString().trim();
 
         if (email.isEmpty()) {
-            etNama.setError("Field Ini Tidak Boleh Kosong");
+            etEmail.setError("Field Ini Tidak Boleh Kosong");
             return false;
         }  else {
-            etNama.setError(null);
+            etEmail.setError(null);
             return true;
         }
     }
