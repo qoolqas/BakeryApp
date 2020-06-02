@@ -61,9 +61,10 @@ public class LoginActivity extends AppCompatActivity {
                 }
                 loading = ProgressDialog.show(mContext, null, "Harap Tunggu...", true, false);
                 sharedPrefManager.saveName(SharedPrefManager.SP_NAME, Objects.requireNonNull(etEmail.getEditText()).getText().toString().trim());
-                Intent intent = new Intent(LoginActivity.this, MainActivity.class)
-                        .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
-                startActivity(intent);
+                requestLogin();
+//                Intent intent = new Intent(LoginActivity.this, MainActivity.class)
+//                        .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+//                startActivity(intent);
                 finish();
 
 
