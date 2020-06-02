@@ -7,7 +7,7 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.q.bakeryapp.connection.Client;
 import com.q.bakeryapp.connection.Service;
-import com.q.bakeryapp.model.ProdukResponse;
+import com.q.bakeryapp.model.produk.ProdukResponse;
 
 import org.jetbrains.annotations.NotNull;
 

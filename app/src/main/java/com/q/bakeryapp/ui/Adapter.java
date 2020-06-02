@@ -13,9 +13,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.q.bakeryapp.DetailActivity;
 import com.q.bakeryapp.R;
-import com.q.bakeryapp.model.ProdukModel;
+import com.q.bakeryapp.model.produk.ProdukModel;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {

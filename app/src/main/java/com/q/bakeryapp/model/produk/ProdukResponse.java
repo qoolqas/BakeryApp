@@ -1,4 +1,4 @@
-package com.q.bakeryapp.model;
+package com.q.bakeryapp.model.produk;
 
 import com.google.gson.annotations.SerializedName;
 
