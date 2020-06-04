@@ -60,12 +60,12 @@ public class LoginActivity extends AppCompatActivity {
                     return;
                 }
                 loading = ProgressDialog.show(mContext, null, "Harap Tunggu...", true, false);
- //               sharedPrefManager.saveName(SharedPrefManager.SP_NAME, Objects.requireNonNull(etEmail.getEditText()).getText().toString().trim());
+                sharedPrefManager.saveName(SharedPrefManager.SP_NAME, Objects.requireNonNull(etEmail.getEditText()).getText().toString().trim());
                 requestLogin();
 //                Intent intent = new Intent(LoginActivity.this, MainActivity.class)
 //                        .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
 //                startActivity(intent);
-//                finish();
+
 
 
 
@@ -91,6 +91,7 @@ public class LoginActivity extends AppCompatActivity {
                             Intent intent = new Intent(LoginActivity.this, MainActivity.class)
                                     .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
                             startActivity(intent);
+                            finish();
                         } else {
                             AlertDialog.Builder dlgAlert  = new AlertDialog.Builder(mContext);
 
