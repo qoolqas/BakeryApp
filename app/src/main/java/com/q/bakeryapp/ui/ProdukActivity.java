@@ -15,7 +15,7 @@
 //import com.q.bakeryapp.model.produk.ProdukModel;
 //import com.q.bakeryapp.model.produk.ProdukResponse;
 //import com.q.bakeryapp.ui.produk.basah.BasahAdapter;
-//import com.q.bakeryapp.ui.produk.basah.ViewModel;
+//import com.q.bakeryapp.ui.produk.ViewModel;
 //
 //import java.util.ArrayList;
 //import java.util.List;

@@ -1,4 +1,4 @@
-package com.q.bakeryapp.ui.produk.basah;
+package com.q.bakeryapp.ui.produk;
 
 import android.util.Log;
 
@@ -62,7 +62,7 @@ public class ViewModel extends androidx.lifecycle.ViewModel {
         });
     }
 
-    LiveData<ProdukResponse> liveGetBasah() {
+    public LiveData<ProdukResponse> liveGetBasah() {
         if (produk == null) {
             produk = new MutableLiveData<>();
             loadBasah();
