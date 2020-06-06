@@ -1,4 +1,4 @@
-package com.q.bakeryapp.ui.gallery;
+package com.q.bakeryapp.ui.toko;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;

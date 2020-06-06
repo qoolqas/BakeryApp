@@ -27,21 +27,5 @@ public class MainActivity extends AppCompatActivity {
         name = findViewById(R.id.name);
         name.setText("Welcome " + sharedPrefManager.getSpName());
 
-        cardRekomendasi = findViewById(R.id.cardRekomendasi);
-        profile = findViewById(R.id.button_profile);
-        cardRekomendasi.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, ProdukActivity.class);
-                startActivity(intent);
-            }
-        });
-        profile.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, ProfileActivity.class);
-                startActivity(intent);
-            }
-        });
     }
 }

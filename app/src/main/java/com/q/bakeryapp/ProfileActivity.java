@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.TextView;
 
 public class ProfileActivity extends AppCompatActivity {
-    TextView profileName, logout;
+    TextView profileName, logout, profileEmail;
     SharedPrefManager sharedPrefManager;
 
     @Override
@@ -19,6 +19,8 @@ public class ProfileActivity extends AppCompatActivity {
 
         profileName = findViewById(R.id.profileName);
         logout = findViewById(R.id.logout);
+        profileEmail = findViewById(R.id.profileEmail);
+        profileEmail.setText(sharedPrefManager.getSpEmail());
         profileName.setText(sharedPrefManager.getSpName());
 
         logout.setOnClickListener(new View.OnClickListener() {
