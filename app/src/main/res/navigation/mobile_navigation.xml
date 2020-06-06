@@ -14,7 +14,8 @@
 
         <action
             android:id="@+id/action_nav_home_to_nav_produk"
-            app:destination="@id/nav_produk" />
+            app:destination="@id/nav_produk"
+            />
         <action
             android:id="@+id/action_nav_home_to_nav_toko"
             app:destination="@id/nav_toko" />
@@ -57,4 +58,5 @@
         android:name="com.q.bakeryapp.ui.produk.KeringFragment"
         android:label="Produk"
         tools:layout="@layout/fragment_kering" />
+
 </navigation>
