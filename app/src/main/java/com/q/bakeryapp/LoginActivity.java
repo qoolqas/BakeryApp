@@ -84,7 +84,7 @@ public class LoginActivity extends AppCompatActivity {
                             sharedPrefManager.saveEmail(SharedPrefManager.SP_EMAIL, Objects.requireNonNull(etEmail.getEditText()).getText().toString().trim());
                             assert response.body() != null;
                             sharedPrefManager.saveName(SharedPrefManager.SP_NAME, response.body().getUser().getNama());
-                            Intent intent = new Intent(LoginActivity.this, MainActivity.class)
+                            Intent intent = new Intent(LoginActivity.this, Main2Activity.class)
                                     .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
                             startActivity(intent);
                             finish();
