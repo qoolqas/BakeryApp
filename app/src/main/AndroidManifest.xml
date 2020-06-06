@@ -14,13 +14,17 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:targetApi="n">
+        <activity android:name=".ui.manage.DeleteActivity"></activity>
+        <activity android:name=".ui.manage.EditActivity" />
+        <activity android:name=".ui.manage.CreateActivity" />
+        <activity android:name=".ui.manage.ManageActivity" />
         <activity
             android:name=".Main2Activity"
             android:label="@string/title_activity_main2"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".RegisterActivity"
-            android:theme="@style/AppTheme.Material"></activity>
+            android:theme="@style/AppTheme.Material" />
         <activity android:name=".ProfileActivity" />
         <activity
             android:name=".PembayaranActivity"

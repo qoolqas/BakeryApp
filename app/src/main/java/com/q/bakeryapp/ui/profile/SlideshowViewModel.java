@@ -1,4 +1,4 @@
-package com.q.bakeryapp.ui.slideshow;
+package com.q.bakeryapp.ui.profile;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;

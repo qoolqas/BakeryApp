@@ -11,33 +11,50 @@
         android:label="@string/menu_home"
         tools:layout="@layout/fragment_home">
 
-        <action
-            android:id="@+id/action_HomeFragment_to_HomeSecondFragment"
-            app:destination="@id/nav_home_second" />
-    </fragment>
-    <fragment
-        android:id="@+id/nav_home_second"
-        android:name="com.q.bakeryapp.ui.home.HomeSecondFragment"
-        android:label="@string/home_second"
-        tools:layout="@layout/fragment_home_second">
-        <action
-            android:id="@+id/action_HomeSecondFragment_to_HomeFragment"
-            app:destination="@id/nav_home" />
 
-        <argument
-            android:name="myArg"
-            app:argType="string" />
+        <action
+            android:id="@+id/action_nav_home_to_nav_produk"
+            app:destination="@id/nav_produk" />
+        <action
+            android:id="@+id/action_nav_home_to_nav_toko"
+            app:destination="@id/nav_toko" />
+        <action
+            android:id="@+id/action_nav_home_to_nav_profile"
+            app:destination="@id/nav_profile" />
     </fragment>
 
+
     <fragment
-        android:id="@+id/nav_gallery"
-        android:name="com.q.bakeryapp.ui.gallery.GalleryFragment"
+        android:id="@+id/nav_toko"
+        android:name="com.q.bakeryapp.ui.toko.GalleryFragment"
         android:label="@string/menu_gallery"
         tools:layout="@layout/fragment_gallery" />
 
     <fragment
-        android:id="@+id/nav_slideshow"
-        android:name="com.q.bakeryapp.ui.slideshow.SlideshowFragment"
+        android:id="@+id/nav_profile"
+        android:name="com.q.bakeryapp.ui.profile.SlideshowFragment"
         android:label="@string/menu_slideshow"
         tools:layout="@layout/fragment_slideshow" />
+    <fragment
+        android:id="@+id/nav_produk"
+        android:name="com.q.bakeryapp.ui.produk.ProdukFragment"
+        android:label="Produk"
+        tools:layout="@layout/fragment_produk" >
+        <action
+            android:id="@+id/action_nav_produk_to_nav_basah"
+            app:destination="@id/nav_basah" />
+        <action
+            android:id="@+id/action_nav_produk_to_nav_kering"
+            app:destination="@id/nav_kering" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_basah"
+        android:name="com.q.bakeryapp.ui.produk.BasahFragment"
+        android:label="Produk"
+        tools:layout="@layout/fragment_basah" />
+    <fragment
+        android:id="@+id/nav_kering"
+        android:name="com.q.bakeryapp.ui.produk.KeringFragment"
+        android:label="Produk"
+        tools:layout="@layout/fragment_kering" />
 </navigation>
