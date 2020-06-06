@@ -2,6 +2,7 @@ package com.q.bakeryapp.ui.produk.basah;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -47,6 +48,7 @@ public class BasahAdapter extends RecyclerView.Adapter<BasahAdapter.ViewHolder> 
         holder.nama.setText(list.get(position).getNama());
         holder.harga.setText(list.get(position).getHarga());
         holder.rating.setRating(Float.parseFloat(list.get(position).getRating())/2);
+        Log.d("gambar", list.get(position).getFoto());
         Glide.with(context).load("file/"+list.get(position).getFoto()).into(holder.photo);
 
     }

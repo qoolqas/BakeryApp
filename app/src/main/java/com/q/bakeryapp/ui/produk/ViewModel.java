@@ -88,7 +88,7 @@ public class ViewModel extends androidx.lifecycle.ViewModel {
         });
     }
 
-    LiveData<ProdukResponse> liveGetKering() {
+    public LiveData<ProdukResponse> liveGetKering() {
         if (produk == null) {
             produk = new MutableLiveData<>();
             loadKering();
