@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 
 public class SharedPrefManager {
     public static final String SP_NAME = "name";
+    public static final String SP_EMAIL = "name";
 
     private SharedPreferences sp;
     private SharedPreferences.Editor spEditor;
@@ -22,6 +23,13 @@ public class SharedPrefManager {
     }
     public String getSpName() {
         return sp.getString(SP_NAME, "token");
+    }
+    public void saveEmail(String keySP, String value) {
+        spEditor.putString(keySP, value);
+        spEditor.commit();
+    }
+    public String getSpEmail() {
+        return sp.getString(SP_EMAIL, "email");
     }
     public  void clear(){
         spEditor.clear();

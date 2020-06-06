@@ -60,7 +60,6 @@ public class LoginActivity extends AppCompatActivity {
                     return;
                 }
                 loading = ProgressDialog.show(mContext, null, "Harap Tunggu...", true, false);
-                sharedPrefManager.saveName(SharedPrefManager.SP_NAME, Objects.requireNonNull(etEmail.getEditText()).getText().toString().trim());
                 requestLogin();
 //                Intent intent = new Intent(LoginActivity.this, MainActivity.class)
 //                        .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -82,12 +81,9 @@ public class LoginActivity extends AppCompatActivity {
                     public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
                         if (response.isSuccessful()){
                             loading.dismiss();
-//                            LoginResponse loginResponse = response.body();
-
-//                            sharedPrefManager.saveToken(SharedPrefManager.SP_TOKEN,loginResponse.getToken());
-//                            sharedPrefManager.getSpToken();
-
-//                            sharedPrefManager.saveSPBoolean(SharedPrefManager.SP_SUDAH_LOGIN, true);
+                            sharedPrefManager.saveEmail(SharedPrefManager.SP_EMAIL, Objects.requireNonNull(etEmail.getEditText()).getText().toString().trim());
+                            assert response.body() != null;
+                            sharedPrefManager.saveName(SharedPrefManager.SP_NAME, response.body().getUser().getNama());
                             Intent intent = new Intent(LoginActivity.this, MainActivity.class)
                                     .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
                             startActivity(intent);
