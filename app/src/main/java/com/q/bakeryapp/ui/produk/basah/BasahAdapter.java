@@ -15,7 +15,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.q.bakeryapp.DetailActivity;
+import com.bumptech.glide.request.RequestOptions;
+import com.q.bakeryapp.ui.detail.DetailActivity;
 import com.q.bakeryapp.R;
 import com.q.bakeryapp.model.produk.ProdukModel;
 
@@ -47,11 +48,13 @@ public class BasahAdapter extends RecyclerView.Adapter<BasahAdapter.ViewHolder> 
     @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull BasahAdapter.ViewHolder holder, int position) {
+        RequestOptions myOptions = new RequestOptions()
+                .centerCrop();
         holder.nama.setText(list.get(position).getNama());
         holder.harga.setText("RP " + list.get(position).getHarga());
         holder.rating.setRating(Float.parseFloat(list.get(position).getRating()) / 2);
         Log.d("gambar", String.valueOf(list.get(position).getFoto()));
-        Glide.with(context).load(list.get(position).getFoto()).into(holder.photo);
+        Glide.with(context).load("C:/xampp/htdocs/roti/file"+list.get(position).getFoto()).into(holder.photo);
 
     }
 

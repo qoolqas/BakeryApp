@@ -1,4 +1,4 @@
-package com.q.bakeryapp;
+package com.q.bakeryapp.ui.detail;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,6 +6,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+
+import com.q.bakeryapp.MainActivity;
+import com.q.bakeryapp.R;
 
 public class PembayaranActivity extends AppCompatActivity {
     Button konfirmasi;

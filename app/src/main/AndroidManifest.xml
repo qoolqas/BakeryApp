@@ -39,9 +39,9 @@
             android:theme="@style/AppTheme.Material" />
         <activity android:name=".ProfileActivity" />
         <activity
-            android:name=".PembayaranActivity"
+            android:name=".ui.detail.PembayaranActivity"
             android:theme="@style/AppTheme.Material" />
-        <activity android:name=".DetailActivity" />
+        <activity android:name=".ui.detail.DetailActivity" />
         <activity
             android:name=".LoginActivity"
             android:theme="@style/AppTheme.Material">

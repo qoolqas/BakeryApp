@@ -1,4 +1,4 @@
-package com.q.bakeryapp;
+package com.q.bakeryapp.ui.detail;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.google.android.material.appbar.CollapsingToolbarLayout;
+import com.q.bakeryapp.R;
 import com.q.bakeryapp.model.produk.ProdukModel;
 
 public class DetailActivity extends AppCompatActivity {

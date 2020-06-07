@@ -15,10 +15,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.q.bakeryapp.DetailActivity;
 import com.q.bakeryapp.R;
 import com.q.bakeryapp.model.produk.ProdukModel;
-import com.q.bakeryapp.ui.produk.basah.BasahFragment;
 
 import java.util.List;
 

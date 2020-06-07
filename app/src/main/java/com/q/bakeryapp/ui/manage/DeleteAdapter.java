@@ -3,7 +3,6 @@ package com.q.bakeryapp.ui.manage;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,14 +16,11 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.q.bakeryapp.DetailActivity;
 import com.q.bakeryapp.R;
-import com.q.bakeryapp.SharedPrefManager;
 import com.q.bakeryapp.connection.Client;
 import com.q.bakeryapp.connection.Service;
 import com.q.bakeryapp.model.delete.DeleteResponse;
 import com.q.bakeryapp.model.produk.ProdukModel;
-import com.q.bakeryapp.ui.produk.kering.KeringFragment;
 
 import java.util.List;
 
