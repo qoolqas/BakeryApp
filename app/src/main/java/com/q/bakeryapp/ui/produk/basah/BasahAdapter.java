@@ -1,5 +1,6 @@
 package com.q.bakeryapp.ui.produk.basah;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
@@ -43,13 +44,14 @@ public class BasahAdapter extends RecyclerView.Adapter<BasahAdapter.ViewHolder> 
         return new ViewHolder(view);
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull BasahAdapter.ViewHolder holder, int position) {
         holder.nama.setText(list.get(position).getNama());
-        holder.harga.setText(list.get(position).getHarga());
-        holder.rating.setRating(Float.parseFloat(list.get(position).getRating())/2);
+        holder.harga.setText("RP " + list.get(position).getHarga());
+        holder.rating.setRating(Float.parseFloat(list.get(position).getRating()) / 2);
         Log.d("gambar", list.get(position).getFoto());
-        Glide.with(context).load("file/"+list.get(position).getFoto()).into(holder.photo);
+        Glide.with(context).load("file/" + list.get(position).getFoto()).into(holder.photo);
 
     }
 

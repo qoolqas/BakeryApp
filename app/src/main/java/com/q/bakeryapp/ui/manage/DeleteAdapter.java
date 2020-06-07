@@ -1,5 +1,6 @@
 package com.q.bakeryapp.ui.manage;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -54,10 +55,11 @@ public class DeleteAdapter extends RecyclerView.Adapter<DeleteAdapter.ViewHolder
         return new ViewHolder(view);
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull DeleteAdapter.ViewHolder holder, int position) {
         holder.nama.setText(list.get(position).getNama());
-        holder.harga.setText(list.get(position).getHarga());
+        holder.harga.setText("RP " + list.get(position).getHarga());
         holder.rating.setRating(Float.parseFloat(list.get(position).getRating()) / 2);
         Glide.with(context).load("file/" + list.get(position).getFoto()).into(holder.photo);
 

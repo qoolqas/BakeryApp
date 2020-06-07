@@ -46,7 +46,7 @@ public class KeringAdapter extends RecyclerView.Adapter<KeringAdapter.ViewHolder
     @Override
     public void onBindViewHolder(@NonNull KeringAdapter.ViewHolder holder, int position) {
         holder.nama.setText(list.get(position).getNama());
-        holder.harga.setText(list.get(position).getHarga());
+        holder.harga.setText("RP " + list.get(position).getHarga());
         holder.rating.setRating(Float.parseFloat(list.get(position).getRating())/2);
         Glide.with(context).load("file/"+list.get(position).getFoto()).into(holder.photo);
 
