@@ -23,6 +23,7 @@ public class ManageActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(ManageActivity.this, CreateActivity.class);
+                intent.putExtra("edit", "0");
                 startActivity(intent);
             }
         });

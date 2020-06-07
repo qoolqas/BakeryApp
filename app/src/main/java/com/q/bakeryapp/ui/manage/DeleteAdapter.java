@@ -1,8 +1,8 @@
 package com.q.bakeryapp.ui.manage;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,14 +16,11 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.q.bakeryapp.DetailActivity;
 import com.q.bakeryapp.R;
-import com.q.bakeryapp.SharedPrefManager;
 import com.q.bakeryapp.connection.Client;
 import com.q.bakeryapp.connection.Service;
 import com.q.bakeryapp.model.delete.DeleteResponse;
 import com.q.bakeryapp.model.produk.ProdukModel;
-import com.q.bakeryapp.ui.produk.kering.KeringFragment;
 
 import java.util.List;
 
@@ -35,6 +32,7 @@ public class DeleteAdapter extends RecyclerView.Adapter<DeleteAdapter.ViewHolder
     private DeleteActivity produkActivity;
     private Context context;
     private List<ProdukModel> list;
+    String ip = "192.168.1.9:8080";
 
     public DeleteAdapter(DeleteActivity produkActivity, Context context) {
         this.produkActivity = produkActivity;
@@ -54,12 +52,13 @@ public class DeleteAdapter extends RecyclerView.Adapter<DeleteAdapter.ViewHolder
         return new ViewHolder(view);
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull DeleteAdapter.ViewHolder holder, int position) {
         holder.nama.setText(list.get(position).getNama());
-        holder.harga.setText(list.get(position).getHarga());
+        holder.harga.setText("RP " + list.get(position).getHarga());
         holder.rating.setRating(Float.parseFloat(list.get(position).getRating()) / 2);
-        Glide.with(context).load("file/" + list.get(position).getFoto()).into(holder.photo);
+        Glide.with(context).load("http://"+ ip +"/roti/file/"+list.get(position).getFoto()).into(holder.photo);
 
     }
 
@@ -86,10 +85,6 @@ public class DeleteAdapter extends RecyclerView.Adapter<DeleteAdapter.ViewHolder
                     final int position = getAdapterPosition();
                     if (position != RecyclerView.NO_POSITION) {
                         ProdukModel data = list.get(position);
-                        Intent intent = new Intent(view.getContext(), DetailActivity.class);
-                        intent.putExtra("data", data);
-                        view.getContext().startActivity(intent);
-
                         new AlertDialog.Builder(context)
                                 .setMessage("Are you sure you want to delete this data?")
                                 .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
@@ -112,6 +107,7 @@ public class DeleteAdapter extends RecyclerView.Adapter<DeleteAdapter.ViewHolder
                                             @Override
                                             public void onFailure(Call<DeleteResponse> call, Throwable t) {
                                                 Toast.makeText(context, view.getContext().getString(R.string.msg_gagal), Toast.LENGTH_SHORT).show();
+                                                produkActivity.finish();
 
                                             }
                                         });

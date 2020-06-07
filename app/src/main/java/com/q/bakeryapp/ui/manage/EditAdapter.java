@@ -1,7 +1,9 @@
-package com.q.bakeryapp.ui.produk.kering;
+package com.q.bakeryapp.ui.manage;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,19 +15,18 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.q.bakeryapp.ui.detail.DetailActivity;
 import com.q.bakeryapp.R;
 import com.q.bakeryapp.model.produk.ProdukModel;
 
 import java.util.List;
 
-public class KeringAdapter extends RecyclerView.Adapter<KeringAdapter.ViewHolder> {
-    private KeringFragment produkActivity;
+public class EditAdapter extends RecyclerView.Adapter<EditAdapter.ViewHolder> {
+    private EditActivity produkActivity;
     private Context context;
     private List<ProdukModel> list;
     String ip = "192.168.1.9:8080";
 
-    public KeringAdapter(KeringFragment produkActivity, Context context) {
+    public EditAdapter(EditActivity produkActivity, Context context) {
         this.produkActivity = produkActivity;
         this.context = context;
     }
@@ -37,17 +38,19 @@ public class KeringAdapter extends RecyclerView.Adapter<KeringAdapter.ViewHolder
 
     @NonNull
     @Override
-    public KeringAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public EditAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
         View view = layoutInflater.inflate(R.layout.item_card, parent, false);
         return new ViewHolder(view);
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
-    public void onBindViewHolder(@NonNull KeringAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull EditAdapter.ViewHolder holder, int position) {
         holder.nama.setText(list.get(position).getNama());
         holder.harga.setText("RP " + list.get(position).getHarga());
-        holder.rating.setRating(Float.parseFloat(list.get(position).getRating())/2);
+        holder.rating.setRating(Float.parseFloat(list.get(position).getRating()) / 2);
+        Log.d("gambar", String.valueOf(list.get(position).getFoto()));
         Glide.with(context).load("http://"+ ip +"/roti/file/"+list.get(position).getFoto()).into(holder.photo);
 
     }
@@ -75,7 +78,8 @@ public class KeringAdapter extends RecyclerView.Adapter<KeringAdapter.ViewHolder
                     int position = getAdapterPosition();
                     if (position != RecyclerView.NO_POSITION) {
                         ProdukModel data = list.get(position);
-                        Intent intent = new Intent(view.getContext(), DetailActivity.class);
+                        Intent intent = new Intent(view.getContext(), CreateActivity.class);
+                        intent.putExtra("edit", "1");
                         intent.putExtra("data", data);
                         view.getContext().startActivity(intent);
 

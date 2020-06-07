@@ -1,5 +1,6 @@
 package com.q.bakeryapp.ui.produk.basah;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
@@ -14,7 +15,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.q.bakeryapp.DetailActivity;
+import com.bumptech.glide.request.RequestOptions;
+import com.q.bakeryapp.ui.detail.DetailActivity;
 import com.q.bakeryapp.R;
 import com.q.bakeryapp.model.produk.ProdukModel;
 
@@ -24,6 +26,8 @@ public class BasahAdapter extends RecyclerView.Adapter<BasahAdapter.ViewHolder> 
     private BasahFragment produkActivity;
     private Context context;
     private List<ProdukModel> list;
+    String ip = "192.168.1.9:8080";
+
 
     public BasahAdapter(BasahFragment produkActivity, Context context) {
         this.produkActivity = produkActivity;
@@ -43,13 +47,16 @@ public class BasahAdapter extends RecyclerView.Adapter<BasahAdapter.ViewHolder> 
         return new ViewHolder(view);
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull BasahAdapter.ViewHolder holder, int position) {
+        RequestOptions myOptions = new RequestOptions()
+                .centerCrop();
         holder.nama.setText(list.get(position).getNama());
-        holder.harga.setText(list.get(position).getHarga());
-        holder.rating.setRating(Float.parseFloat(list.get(position).getRating())/2);
-        Log.d("gambar", list.get(position).getFoto());
-        Glide.with(context).load("file/"+list.get(position).getFoto()).into(holder.photo);
+        holder.harga.setText("RP " + list.get(position).getHarga());
+        holder.rating.setRating(Float.parseFloat(list.get(position).getRating()) / 2);
+        Log.d("gambar", String.valueOf(list.get(position).getFoto()));
+        Glide.with(context).load("http://"+ ip +"/roti/file/"+list.get(position).getFoto()).into(holder.photo);
 
     }
 

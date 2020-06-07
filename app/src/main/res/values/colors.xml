@@ -6,4 +6,6 @@
     <color name="black">#000</color>
     <color name="white_background">#fff</color>
     <color name="transparent">#00000000</color>
+    <color name="colorSoftBlue">#3A78D6</color>
+    <color name="white_one">#fff</color>
 </resources>
