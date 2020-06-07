@@ -25,10 +25,10 @@
             app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
             <ImageView
+                android:id="@+id/detail_image"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:fitsSystemWindows="true"
-                android:scaleType="fitXY"
                 android:src="@drawable/bolu"
                 app:layout_collapseMode="parallax" />
 
@@ -141,7 +141,6 @@
                 android:layout_marginEnd="16dp"
                 android:text="Deskripsi"
                 android:textSize="18sp"
-                android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
@@ -151,6 +150,7 @@
                 android:id="@+id/detail_beli"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
+                android:layout_marginTop="16dp"
                 android:background="@drawable/button_round2"
                 android:text="Beli"
                 android:textColor="@color/white_background"

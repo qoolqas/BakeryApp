@@ -35,7 +35,7 @@ public class RegisterActivity extends AppCompatActivity {
                     return;
                 }
                 sharedPrefManager.saveName(SharedPrefManager.SP_NAME, Objects.requireNonNull(etNama.getEditText()).getText().toString().trim());
-                Intent intent = new Intent(RegisterActivity.this, MainActivity.class)
+                Intent intent = new Intent(RegisterActivity.this, LoginActivity.class)
                         .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
                 finish();

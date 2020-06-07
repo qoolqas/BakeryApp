@@ -42,6 +42,7 @@ public class BasahFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
         viewModel = ViewModelProviders.of(this).get(ViewModel.class);
         adapter = new BasahAdapter(this, getActivity());
         adapter.setProduk(produk);

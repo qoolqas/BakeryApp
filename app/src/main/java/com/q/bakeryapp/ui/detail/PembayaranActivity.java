@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import com.q.bakeryapp.MainActivity;
 import com.q.bakeryapp.R;
 
 public class PembayaranActivity extends AppCompatActivity {
@@ -22,7 +21,7 @@ public class PembayaranActivity extends AppCompatActivity {
         konfirmasi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(PembayaranActivity.this, MainActivity.class)
+                Intent intent = new Intent(PembayaranActivity.this, SuccessActivity.class)
                         .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
             }
