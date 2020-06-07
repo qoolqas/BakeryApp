@@ -86,10 +86,6 @@ public class DeleteAdapter extends RecyclerView.Adapter<DeleteAdapter.ViewHolder
                     final int position = getAdapterPosition();
                     if (position != RecyclerView.NO_POSITION) {
                         ProdukModel data = list.get(position);
-                        Intent intent = new Intent(view.getContext(), DetailActivity.class);
-                        intent.putExtra("data", data);
-                        view.getContext().startActivity(intent);
-
                         new AlertDialog.Builder(context)
                                 .setMessage("Are you sure you want to delete this data?")
                                 .setPositiveButton("Yes", new DialogInterface.OnClickListener() {

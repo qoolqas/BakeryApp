@@ -28,7 +28,7 @@ public interface Service {
     Call<LoginResponse> loginRequest(@Field("email") String email,
                                      @Field("password") String password
     );
-    @DELETE("delete.php/{id}")
+    @DELETE("delete.php")
     Call<DeleteResponse> delete(@Query("produk_id")String id);
 
 }

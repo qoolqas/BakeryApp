@@ -16,7 +16,10 @@
         tools:targetApi="n">
         <activity android:name=".ui.manage.DeleteActivity"></activity>
         <activity android:name=".ui.manage.EditActivity" />
-        <activity android:name=".ui.manage.CreateActivity" />
+        <activity android:name=".ui.manage.CreateActivity"
+            android:theme="@style/AppTheme.Material" >
+
+        </activity>
         <activity android:name=".ui.manage.ManageActivity" />
         <activity
             android:name=".Main2Activity"

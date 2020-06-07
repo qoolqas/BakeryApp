@@ -36,7 +36,7 @@ public class ViewModel extends androidx.lifecycle.ViewModel {
         });
     }
 
-    LiveData<ProdukResponse> liveGet() {
+    public LiveData<ProdukResponse> liveGet() {
         if (produk == null) {
             produk = new MutableLiveData<>();
             loadProduct();
