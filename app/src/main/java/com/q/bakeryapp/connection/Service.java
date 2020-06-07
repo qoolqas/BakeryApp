@@ -5,6 +5,7 @@ import com.q.bakeryapp.model.delete.DeleteResponse;
 import com.q.bakeryapp.model.edit.EditResponse;
 import com.q.bakeryapp.model.login.LoginResponse;
 import com.q.bakeryapp.model.produk.ProdukResponse;
+import com.q.bakeryapp.model.register.RegisterResponse;
 
 import java.util.Map;
 
@@ -37,6 +38,15 @@ public interface Service {
                                      @Field("password") String password
     );
 
+    @FormUrlEncoded
+    @POST("register.php")
+    Call<RegisterResponse> registerRequest(
+            @Field("nama") String nama,
+            @Field("email") String email,
+            @Field("password") String password,
+            @Field("alamat") String alamat
+    );
+
     @DELETE("delete.php")
     Call<DeleteResponse> delete(@Query("produk_id") String id);
 
@@ -50,6 +60,7 @@ public interface Service {
             @Part("deskripsi") RequestBody deskripsi,
             @PartMap Map<String, RequestBody> map
     );
+
     @Multipart
     @POST("update.php")
     Call<EditResponse> update(
@@ -61,6 +72,7 @@ public interface Service {
             @Part("produk_id") RequestBody id,
             @PartMap Map<String, RequestBody> map
     );
+
     @Multipart
     @POST("update.php")
     Call<EditResponse> updateNo(
