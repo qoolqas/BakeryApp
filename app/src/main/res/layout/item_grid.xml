@@ -18,7 +18,7 @@
         android:gravity="center_horizontal">
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/cardList"
+            android:id="@+id/cardProduk"
             android:layout_width="150dp"
             android:layout_height="150dp"
             android:layout_margin="5dp"
@@ -56,7 +56,7 @@
             </FrameLayout>
         </androidx.cardview.widget.CardView>
         <androidx.cardview.widget.CardView
-            android:id="@+id/cardKelola"
+            android:id="@+id/cardManage"
             android:layout_width="150dp"
             android:layout_height="150dp"
             android:layout_margin="5dp"
@@ -140,7 +140,7 @@
             </FrameLayout>
         </androidx.cardview.widget.CardView>
         <androidx.cardview.widget.CardView
-            android:id="@+id/cardLokasi"
+            android:id="@+id/cardToko"
             android:layout_width="150dp"
             android:layout_height="150dp"
             android:layout_margin="5dp"

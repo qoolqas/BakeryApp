@@ -10,7 +10,6 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.q.bakeryapp.ui.ProdukActivity;
 
 public class MainActivity extends AppCompatActivity {
     TextView name;

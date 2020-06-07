@@ -14,13 +14,25 @@
 
         <action
             android:id="@+id/action_nav_home_to_nav_produk"
-            app:destination="@id/nav_produk" />
+            app:destination="@id/nav_produk"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
         <action
             android:id="@+id/action_nav_home_to_nav_toko"
-            app:destination="@id/nav_toko" />
+            app:destination="@id/nav_toko"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
         <action
             android:id="@+id/action_nav_home_to_nav_profile"
-            app:destination="@id/nav_profile" />
+            app:destination="@id/nav_profile"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
     </fragment>
 
 
@@ -42,19 +54,28 @@
         tools:layout="@layout/fragment_produk" >
         <action
             android:id="@+id/action_nav_produk_to_nav_basah"
-            app:destination="@id/nav_basah" />
+            app:destination="@id/nav_basah"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
         <action
             android:id="@+id/action_nav_produk_to_nav_kering"
-            app:destination="@id/nav_kering" />
+            app:destination="@id/nav_kering"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
     </fragment>
     <fragment
         android:id="@+id/nav_basah"
-        android:name="com.q.bakeryapp.ui.produk.BasahFragment"
+        android:name="com.q.bakeryapp.ui.produk.basah.BasahFragment"
         android:label="Produk"
         tools:layout="@layout/fragment_basah" />
     <fragment
         android:id="@+id/nav_kering"
-        android:name="com.q.bakeryapp.ui.produk.KeringFragment"
+        android:name="com.q.bakeryapp.ui.produk.kering.KeringFragment"
         android:label="Produk"
         tools:layout="@layout/fragment_kering" />
+
 </navigation>

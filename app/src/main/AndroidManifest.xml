@@ -21,7 +21,13 @@
         <activity
             android:name=".Main2Activity"
             android:label="@string/title_activity_main2"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".RegisterActivity"
             android:theme="@style/AppTheme.Material" />
@@ -29,16 +35,11 @@
         <activity
             android:name=".PembayaranActivity"
             android:theme="@style/AppTheme.Material" />
-        <activity android:name=".ui.ProdukActivity" />
         <activity android:name=".DetailActivity" />
         <activity
             android:name=".LoginActivity"
             android:theme="@style/AppTheme.Material">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".MainActivity" />
     </application>
