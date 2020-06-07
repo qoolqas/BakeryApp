@@ -19,8 +19,7 @@ import com.q.bakeryapp.R;
 import com.q.bakeryapp.ui.manage.ManageActivity;
 
 public class HomeFragment extends Fragment {
-    CardView cardProduk, cardManage, cardToko;
-
+    private CardView cardProduk, cardManage, cardToko, cardProfile;
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
@@ -35,8 +34,10 @@ public class HomeFragment extends Fragment {
         cardProduk = view.findViewById(R.id.cardProduk);
         cardManage = view.findViewById(R.id.cardManage);
         cardToko = view.findViewById(R.id.cardToko);
+        cardProfile = view.findViewById(R.id.cardProfile);
         cardProduk.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_nav_home_to_nav_produk, null));
         cardToko.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_nav_home_to_nav_toko, null));
+        cardProfile.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_nav_home_to_nav_profile, null));
 
         cardManage.setOnClickListener(new View.OnClickListener() {
             @Override

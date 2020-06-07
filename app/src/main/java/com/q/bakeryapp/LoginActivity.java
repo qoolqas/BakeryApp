@@ -107,21 +107,8 @@ public class LoginActivity extends AppCompatActivity {
 
                     @Override
                     public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
-                        if (response.isSuccessful()){
-                            loading.dismiss();
-                            assert response.body() != null;
-                            try {
-                                sharedPrefManager.saveEmail(SharedPrefManager.SP_EMAIL, Objects.requireNonNull(etEmail.getEditText()).getText().toString().trim());
-                                sharedPrefManager.saveName(SharedPrefManager.SP_NAME, response.body().getUser().getNama());
-                            }catch (Exception e){
-                                Log.d("catch", "catch");
-                            }
+                        if (response.body().isError()){
 
-                            Intent intent = new Intent(LoginActivity.this, Main2Activity.class)
-                                    .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
-                            startActivity(intent);
-                            finish();
-                        } else {
                             AlertDialog.Builder dlgAlert  = new AlertDialog.Builder(mContext);
 
                             dlgAlert.setMessage("Mohon Periksa Kembali");
@@ -138,6 +125,20 @@ public class LoginActivity extends AppCompatActivity {
                                         }
                                     });
                             loading.dismiss();
+                        } else {
+                            loading.dismiss();
+                            assert response.body() != null;
+                            try {
+                                sharedPrefManager.saveEmail(SharedPrefManager.SP_EMAIL, Objects.requireNonNull(etEmail.getEditText()).getText().toString().trim());
+                                sharedPrefManager.saveName(SharedPrefManager.SP_NAME, response.body().getUser().getNama());
+                            }catch (Exception e){
+                                Log.d("catch", "catch");
+                            }
+
+                            Intent intent = new Intent(LoginActivity.this, Main2Activity.class)
+                                    .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+                            startActivity(intent);
+                            finish();
                         }
                     }
 
