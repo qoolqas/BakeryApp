@@ -57,7 +57,7 @@ public class CreateActivity extends AppCompatActivity {
     RadioButton basah, kering;
     Uri fileUri;
     public ProgressDialog pDialog;
-    String ip = "192.168.1.9:8080";
+    String domain = "192.168.1.9:8080";
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -275,7 +275,7 @@ public class CreateActivity extends AppCompatActivity {
         deskripsi.setText(produkModel.getDeskripsi());
         Glide.with(CreateActivity.this)
                 .asBitmap()
-                .load("http://"+ ip +"/roti/file/"+produkModel.getFoto())
+                .load("http://"+ domain +"/roti/file/"+produkModel.getFoto())
                 .into(photo);
         Log.d("fileuri", String.valueOf(fileUri));
     }

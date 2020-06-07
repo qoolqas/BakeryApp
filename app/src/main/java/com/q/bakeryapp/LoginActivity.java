@@ -36,6 +36,7 @@ public class LoginActivity extends AppCompatActivity {
     Context mContext = this;
     SharedPrefManager sharedPrefManager;
     ProgressDialog loading;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,6 +57,7 @@ public class LoginActivity extends AppCompatActivity {
         initComponents();
 
     }
+
     @Override
     public void onRequestPermissionsResult(int requestCode,
                                            @NotNull String[] permissions, @NotNull int[] grantResults) {
@@ -75,9 +77,10 @@ public class LoginActivity extends AppCompatActivity {
             }
         }
     }
-    private void initComponents(){
+
+    private void initComponents() {
         etEmail = findViewById(R.id.loginEtName);
-        etPassword =  findViewById(R.id.loginEtPassword);
+        etPassword = findViewById(R.id.loginEtPassword);
         btnLogin = findViewById(R.id.loginButtonLogin);
 
 
@@ -89,27 +92,21 @@ public class LoginActivity extends AppCompatActivity {
                 }
                 loading = ProgressDialog.show(mContext, null, "Harap Tunggu...", true, false);
                 requestLogin();
-//                Intent intent = new Intent(LoginActivity.this, MainActivity.class)
-//                        .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
-//                startActivity(intent);
-
-
-
 
             }
         });
 
     }
-    private void requestLogin(){
+
+    private void requestLogin() {
         Client.getClient().create(Service.class).loginRequest(etEmail.getEditText().getText().toString(), etPassword.getEditText().getText().toString())
-                .enqueue(new Callback<LoginResponse>()
-                {
+                .enqueue(new Callback<LoginResponse>() {
 
                     @Override
                     public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
-                        if (response.body().isError()){
+                        if (response.body().isError()) {
 
-                            AlertDialog.Builder dlgAlert  = new AlertDialog.Builder(mContext);
+                            AlertDialog.Builder dlgAlert = new AlertDialog.Builder(mContext);
 
                             dlgAlert.setMessage("Mohon Periksa Kembali");
                             dlgAlert.setTitle("Email Atau Password Anda Salah");
@@ -128,12 +125,9 @@ public class LoginActivity extends AppCompatActivity {
                         } else {
                             loading.dismiss();
                             assert response.body() != null;
-                            try {
-                                sharedPrefManager.saveEmail(SharedPrefManager.SP_EMAIL, Objects.requireNonNull(etEmail.getEditText()).getText().toString().trim());
-                                sharedPrefManager.saveName(SharedPrefManager.SP_NAME, response.body().getUser().getNama());
-                            }catch (Exception e){
-                                Log.d("catch", "catch");
-                            }
+
+                            sharedPrefManager.saveEmail(SharedPrefManager.SP_EMAIL, Objects.requireNonNull(etEmail.getEditText()).getText().toString().trim());
+                            sharedPrefManager.saveName(SharedPrefManager.SP_NAME, response.body().getUser().getNama());
 
                             Intent intent = new Intent(LoginActivity.this, Main2Activity.class)
                                     .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -149,13 +143,14 @@ public class LoginActivity extends AppCompatActivity {
                     }
                 });
     }
+
     private boolean validateName() {
         String email = (Objects.requireNonNull(etEmail.getEditText())).getText().toString().trim();
 
         if (email.isEmpty()) {
             etEmail.setError("Field Ini Tidak Boleh Kosong");
             return false;
-        }  else {
+        } else {
             etEmail.setError(null);
             return true;
         }

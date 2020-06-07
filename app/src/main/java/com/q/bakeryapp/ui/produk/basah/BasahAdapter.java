@@ -26,7 +26,7 @@ public class BasahAdapter extends RecyclerView.Adapter<BasahAdapter.ViewHolder> 
     private BasahFragment produkActivity;
     private Context context;
     private List<ProdukModel> list;
-    String ip = "192.168.1.9:8080";
+    String domain = "192.168.1.9:8080";
 
 
     public BasahAdapter(BasahFragment produkActivity, Context context) {
@@ -56,7 +56,7 @@ public class BasahAdapter extends RecyclerView.Adapter<BasahAdapter.ViewHolder> 
         holder.harga.setText("RP " + list.get(position).getHarga());
         holder.rating.setRating(Float.parseFloat(list.get(position).getRating()) / 2);
         Log.d("gambar", String.valueOf(list.get(position).getFoto()));
-        Glide.with(context).load("http://"+ ip +"/roti/file/"+list.get(position).getFoto()).into(holder.photo);
+        Glide.with(context).load("http://"+ domain +"/roti/file/"+list.get(position).getFoto()).into(holder.photo);
 
     }
 
