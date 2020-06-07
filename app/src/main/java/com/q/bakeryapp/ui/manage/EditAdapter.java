@@ -1,4 +1,4 @@
-package com.q.bakeryapp.ui.produk.basah;
+package com.q.bakeryapp.ui.manage;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -18,15 +18,16 @@ import com.bumptech.glide.Glide;
 import com.q.bakeryapp.DetailActivity;
 import com.q.bakeryapp.R;
 import com.q.bakeryapp.model.produk.ProdukModel;
+import com.q.bakeryapp.ui.produk.basah.BasahFragment;
 
 import java.util.List;
 
-public class BasahAdapter extends RecyclerView.Adapter<BasahAdapter.ViewHolder> {
-    private BasahFragment produkActivity;
+public class EditAdapter extends RecyclerView.Adapter<EditAdapter.ViewHolder> {
+    private EditActivity produkActivity;
     private Context context;
     private List<ProdukModel> list;
 
-    public BasahAdapter(BasahFragment produkActivity, Context context) {
+    public EditAdapter(EditActivity produkActivity, Context context) {
         this.produkActivity = produkActivity;
         this.context = context;
     }
@@ -38,7 +39,7 @@ public class BasahAdapter extends RecyclerView.Adapter<BasahAdapter.ViewHolder> 
 
     @NonNull
     @Override
-    public BasahAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public EditAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
         View view = layoutInflater.inflate(R.layout.item_card, parent, false);
         return new ViewHolder(view);
@@ -46,7 +47,7 @@ public class BasahAdapter extends RecyclerView.Adapter<BasahAdapter.ViewHolder> 
 
     @SuppressLint("SetTextI18n")
     @Override
-    public void onBindViewHolder(@NonNull BasahAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull EditAdapter.ViewHolder holder, int position) {
         holder.nama.setText(list.get(position).getNama());
         holder.harga.setText("RP " + list.get(position).getHarga());
         holder.rating.setRating(Float.parseFloat(list.get(position).getRating()) / 2);
@@ -78,7 +79,8 @@ public class BasahAdapter extends RecyclerView.Adapter<BasahAdapter.ViewHolder> 
                     int position = getAdapterPosition();
                     if (position != RecyclerView.NO_POSITION) {
                         ProdukModel data = list.get(position);
-                        Intent intent = new Intent(view.getContext(), DetailActivity.class);
+                        Intent intent = new Intent(view.getContext(), CreateActivity.class);
+                        intent.putExtra("edit", "1");
                         intent.putExtra("data", data);
                         view.getContext().startActivity(intent);
 

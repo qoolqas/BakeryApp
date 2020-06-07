@@ -49,5 +49,16 @@ public interface Service {
             @Part("deskripsi") RequestBody deskripsi,
             @PartMap Map<String, RequestBody> map
     );
+    @Multipart
+    @POST("update.php")
+    Call<CreateResponse> update(
+            @Part("nama") RequestBody nama,
+            @Part("rating") RequestBody rating,
+            @Part("harga") RequestBody harga,
+            @Part("kategori") RequestBody kategori,
+            @Part("deskripsi") RequestBody deskripsi,
+            @Part("produk_id") RequestBody id,
+            @PartMap Map<String, RequestBody> map
+    );
 
 }
