@@ -50,7 +50,7 @@ public class BasahAdapter extends RecyclerView.Adapter<BasahAdapter.ViewHolder> 
         holder.nama.setText(list.get(position).getNama());
         holder.harga.setText("RP " + list.get(position).getHarga());
         holder.rating.setRating(Float.parseFloat(list.get(position).getRating()) / 2);
-        Log.d("gambar", list.get(position).getFoto());
+        Log.d("gambar", String.valueOf(list.get(position).getFoto()));
         Glide.with(context).load("file/" + list.get(position).getFoto()).into(holder.photo);
 
     }

@@ -114,6 +114,12 @@ public class CreateActivity extends AppCompatActivity {
                 startActivityForResult(pickPhoto, 2);//one can be replaced with any action code
             }
         });
+        simpan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                save();
+            }
+        });
         initDialog();
     }
 
@@ -155,7 +161,7 @@ public class CreateActivity extends AppCompatActivity {
     }
 
     private void saveMedia(Bitmap photo) {
-        File myDirPhotos = new File(Environment.getExternalStorageDirectory() + File.separator + "Canfaro/Temp");
+        File myDirPhotos = new File(Environment.getExternalStorageDirectory() + File.separator + "Roti/Temp");
         myDirPhotos.mkdirs();
         String photoname = nama.getText().toString() + "photo" + "_" + "_.png";
         File file = new File(myDirPhotos, photoname);
@@ -175,7 +181,7 @@ public class CreateActivity extends AppCompatActivity {
 
     }
 
-    private void temp() {
+    private void save() {
         BitmapDrawable fotoD = (BitmapDrawable) photo.getDrawable();
         Bitmap foto = fotoD.getBitmap();
         saveMedia(foto);
@@ -186,7 +192,7 @@ public class CreateActivity extends AppCompatActivity {
         try {
             showpDialog();
             Map<String, RequestBody> map = new HashMap<>();
-            File file = new File(String.valueOf(fileUri));
+            File foto = new File(String.valueOf(fileUri));
             // Parsing any Media type file
             String sNama = Objects.requireNonNull(nama.getText().toString().trim());
             String sRating = Objects.requireNonNull(rating.getText().toString().trim());
@@ -201,8 +207,8 @@ public class CreateActivity extends AppCompatActivity {
             RequestBody reqKategori = RequestBody.create(sKategori, MediaType.parse("multipart/form-data"));
             RequestBody reqDeskripsi = RequestBody.create(sDeskripsi, MediaType.parse("multipart/form-data"));
 
-            RequestBody requestBody = RequestBody.create(MediaType.parse("application/pdf"), file);
-            map.put("file\"; filename=\"" + file.getName() + "\"", requestBody);
+            RequestBody requestBody = RequestBody.create(MediaType.parse(" "), foto);
+            map.put("foto\"; filename=\"" + foto.getName() + "\"", requestBody);
             Service service = Client.getClient().create(Service.class);
             Call<CreateResponse> call = service.create( reqNama, reqRating, reqHarga, reqKategori, reqDeskripsi, map);
             call.enqueue(new Callback<CreateResponse>() {
