@@ -2,6 +2,7 @@ package com.q.bakeryapp.connection;
 
 import com.q.bakeryapp.model.create.CreateResponse;
 import com.q.bakeryapp.model.delete.DeleteResponse;
+import com.q.bakeryapp.model.edit.EditResponse;
 import com.q.bakeryapp.model.login.LoginResponse;
 import com.q.bakeryapp.model.produk.ProdukResponse;
 
@@ -51,7 +52,7 @@ public interface Service {
     );
     @Multipart
     @POST("update.php")
-    Call<CreateResponse> update(
+    Call<EditResponse> update(
             @Part("nama") RequestBody nama,
             @Part("rating") RequestBody rating,
             @Part("harga") RequestBody harga,
@@ -59,6 +60,16 @@ public interface Service {
             @Part("deskripsi") RequestBody deskripsi,
             @Part("produk_id") RequestBody id,
             @PartMap Map<String, RequestBody> map
+    );
+    @Multipart
+    @POST("update.php")
+    Call<EditResponse> updateNo(
+            @Part("nama") RequestBody nama,
+            @Part("rating") RequestBody rating,
+            @Part("harga") RequestBody harga,
+            @Part("kategori") RequestBody kategori,
+            @Part("deskripsi") RequestBody deskripsi,
+            @Part("produk_id") RequestBody id
     );
 
 }

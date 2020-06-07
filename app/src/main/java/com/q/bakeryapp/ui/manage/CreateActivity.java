@@ -27,6 +27,7 @@ import com.q.bakeryapp.R;
 import com.q.bakeryapp.connection.Client;
 import com.q.bakeryapp.connection.Service;
 import com.q.bakeryapp.model.create.CreateResponse;
+import com.q.bakeryapp.model.edit.EditResponse;
 import com.q.bakeryapp.model.produk.ProdukModel;
 
 import org.jetbrains.annotations.NotNull;
@@ -228,7 +229,7 @@ public class CreateActivity extends AppCompatActivity {
             RequestBody requestBody = RequestBody.create(MediaType.parse(" "), foto);
             map.put("foto\"; filename=\"" + foto.getName() + "\"", requestBody);
             Service service = Client.getClient().create(Service.class);
-            Call<CreateResponse> call = service.create( reqNama, reqRating, reqHarga, reqKategori, reqDeskripsi, map);
+            Call<CreateResponse> call = service.create(reqNama, reqRating, reqHarga, reqKategori, reqDeskripsi, map);
             call.enqueue(new Callback<CreateResponse>() {
                 @Override
                 public void onResponse(@NotNull Call<CreateResponse> call, @NotNull Response<CreateResponse> response) {
@@ -253,14 +254,15 @@ public class CreateActivity extends AppCompatActivity {
 
                 }
             });
-        }catch (Exception e){
+        } catch (Exception e) {
             Toast.makeText(getApplicationContext(), "Silahkan Cek Kembali", Toast.LENGTH_SHORT).show();
             Log.d("catch", "catch");
         }
 
 
     }
-    private void setEdit(){
+
+    private void setEdit() {
         nama.setText(produkModel.getNama());
         rating.setText(produkModel.getRating());
         harga.setText(produkModel.getHarga());
@@ -270,59 +272,119 @@ public class CreateActivity extends AppCompatActivity {
             kategori.check(R.id.rd_kering);
         }
         deskripsi.setText(produkModel.getDeskripsi());
+        Glide.with(CreateActivity.this)
+                .asBitmap()
+                .load(produkModel.getFoto())
+                .into(photo);
+        Log.d("fileuri", String.valueOf(fileUri));
     }
-    private void editRoti(){
+
+    private void editRoti() {
         try {
-            showpDialog();
-            Map<String, RequestBody> map = new HashMap<>();
-            File foto = new File(String.valueOf(fileUri));
-            // Parsing any Media type file
-            String sNama = Objects.requireNonNull(nama.getText().toString().trim());
-            String sRating = Objects.requireNonNull(rating.getText().toString().trim());
-            String sHarga = Objects.requireNonNull(harga.getText().toString().trim());
-            String sKategori = Objects.requireNonNull(kat);
-            String sDeskripsi = Objects.requireNonNull(deskripsi.getText().toString().trim());
+            if (fileUri == null) {
+                showpDialog();
+                // Parsing any Media type file
+                String sNama = Objects.requireNonNull(nama.getText().toString().trim());
+                String sRating = Objects.requireNonNull(rating.getText().toString().trim());
+                String sHarga = Objects.requireNonNull(harga.getText().toString().trim());
+                String sKategori = Objects.requireNonNull(kat);
+                String sDeskripsi = Objects.requireNonNull(deskripsi.getText().toString().trim());
+                String sId = Objects.requireNonNull(produkModel.getProdukId());
 
 
-            RequestBody reqNama = RequestBody.create(sNama, MediaType.parse("multipart/form-data"));
-            RequestBody reqRating = RequestBody.create(sRating, MediaType.parse("multipart/form-data"));
-            RequestBody reqHarga = RequestBody.create(sHarga, MediaType.parse("multipart/form-data"));
-            RequestBody reqKategori = RequestBody.create(sKategori, MediaType.parse("multipart/form-data"));
-            RequestBody reqDeskripsi = RequestBody.create(sDeskripsi, MediaType.parse("multipart/form-data"));
+                RequestBody reqNama = RequestBody.create(sNama, MediaType.parse("multipart/form-data"));
+                RequestBody reqRating = RequestBody.create(sRating, MediaType.parse("multipart/form-data"));
+                RequestBody reqHarga = RequestBody.create(sHarga, MediaType.parse("multipart/form-data"));
+                RequestBody reqKategori = RequestBody.create(sKategori, MediaType.parse("multipart/form-data"));
+                RequestBody reqDeskripsi = RequestBody.create(sDeskripsi, MediaType.parse("multipart/form-data"));
+                RequestBody reqId = RequestBody.create(sId, MediaType.parse("multipart/form-data"));
 
-            RequestBody requestBody = RequestBody.create(MediaType.parse(" "), foto);
-            map.put("foto\"; filename=\"" + foto.getName() + "\"", requestBody);
-            Service service = Client.getClient().create(Service.class);
-            Call<CreateResponse> call = service.create( reqNama, reqRating, reqHarga, reqKategori, reqDeskripsi, map);
-            call.enqueue(new Callback<CreateResponse>() {
-                @Override
-                public void onResponse(@NotNull Call<CreateResponse> call, @NotNull Response<CreateResponse> response) {
-                    if (response.isSuccessful()) {
-                        if (response.body() != null) {
+                Service service = Client.getClient().create(Service.class);
+                Call<EditResponse> call = service.updateNo(reqNama, reqRating, reqHarga, reqKategori, reqDeskripsi, reqId);
+                call.enqueue(new Callback<EditResponse>() {
+                    @Override
+                    public void onResponse(@NotNull Call<EditResponse> call, @NotNull Response<EditResponse> response) {
+                        if (response.isSuccessful()) {
+                            if (response.body() != null) {
+                                hidepDialog();
+                                Toast.makeText(getApplicationContext(), getString(R.string.msg_success), Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent(CreateActivity.this, EditActivity.class);
+                                startActivity(intent);
+                                finish();
+
+                            }
+                        } else {
                             hidepDialog();
-                            Toast.makeText(getApplicationContext(), getString(R.string.msg_success), Toast.LENGTH_SHORT).show();
-                            finish();
-
+                            Toast.makeText(getApplicationContext(), getString(R.string.msg_gagal), Toast.LENGTH_SHORT).show();
                         }
-                    } else {
-                        hidepDialog();
-                        Toast.makeText(getApplicationContext(), getString(R.string.msg_gagal), Toast.LENGTH_SHORT).show();
                     }
-                }
 
-                @Override
-                public void onFailure(@NotNull Call<CreateResponse> call, @NotNull Throwable t) {
-                    hidepDialog();
-                    Log.v("Response gotten is", Objects.requireNonNull(t.getMessage()));
-                    Toast.makeText(getApplicationContext(), getString(R.string.msg_gagal) + t.getMessage(), Toast.LENGTH_SHORT).show();
+                    @Override
+                    public void onFailure(@NotNull Call<EditResponse> call, @NotNull Throwable t) {
+                        hidepDialog();
+                        Log.v("Response gotten is", Objects.requireNonNull(t.getMessage()));
+                        Toast.makeText(getApplicationContext(), getString(R.string.msg_gagal) + t.getMessage(), Toast.LENGTH_SHORT).show();
 
-                }
-            });
-        }catch (Exception e){
+                    }
+                });
+            } else {
+                showpDialog();
+                Map<String, RequestBody> map = new HashMap<>();
+                File foto = new File(String.valueOf(fileUri));
+                // Parsing any Media type file
+                String sNama = Objects.requireNonNull(nama.getText().toString().trim());
+                String sRating = Objects.requireNonNull(rating.getText().toString().trim());
+                String sHarga = Objects.requireNonNull(harga.getText().toString().trim());
+                String sKategori = Objects.requireNonNull(kat);
+                String sDeskripsi = Objects.requireNonNull(deskripsi.getText().toString().trim());
+                String sId = Objects.requireNonNull(produkModel.getProdukId());
+
+
+                RequestBody reqNama = RequestBody.create(sNama, MediaType.parse("multipart/form-data"));
+                RequestBody reqRating = RequestBody.create(sRating, MediaType.parse("multipart/form-data"));
+                RequestBody reqHarga = RequestBody.create(sHarga, MediaType.parse("multipart/form-data"));
+                RequestBody reqKategori = RequestBody.create(sKategori, MediaType.parse("multipart/form-data"));
+                RequestBody reqDeskripsi = RequestBody.create(sDeskripsi, MediaType.parse("multipart/form-data"));
+                RequestBody reqId = RequestBody.create(sId, MediaType.parse("multipart/form-data"));
+
+                RequestBody requestBody = RequestBody.create(MediaType.parse(" "), foto);
+                map.put("foto\"; filename=\"" + foto.getName() + "\"", requestBody);
+                Service service = Client.getClient().create(Service.class);
+                Call<EditResponse> call = service.update(reqNama, reqRating, reqHarga, reqKategori, reqDeskripsi, reqId, map);
+                call.enqueue(new Callback<EditResponse>() {
+                    @Override
+                    public void onResponse(@NotNull Call<EditResponse> call, @NotNull Response<EditResponse> response) {
+                        if (response.isSuccessful()) {
+                            if (response.body() != null) {
+                                hidepDialog();
+                                Toast.makeText(getApplicationContext(), getString(R.string.msg_success), Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent(CreateActivity.this, EditActivity.class);
+                                startActivity(intent);
+                                finish();
+
+                            }
+                        } else {
+                            hidepDialog();
+                            Toast.makeText(getApplicationContext(), getString(R.string.msg_gagal), Toast.LENGTH_SHORT).show();
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(@NotNull Call<EditResponse> call, @NotNull Throwable t) {
+                        hidepDialog();
+                        Log.v("Response gotten is", Objects.requireNonNull(t.getMessage()));
+                        Toast.makeText(getApplicationContext(), getString(R.string.msg_gagal) + t.getMessage(), Toast.LENGTH_SHORT).show();
+
+                    }
+                });
+            }
+
+        } catch (Exception e) {
             Toast.makeText(getApplicationContext(), "Silahkan Cek Kembali", Toast.LENGTH_SHORT).show();
             Log.d("catch", "catch");
         }
     }
+
     protected void initDialog() {
 
         pDialog = new ProgressDialog(this);
