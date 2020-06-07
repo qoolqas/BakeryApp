@@ -110,6 +110,7 @@ public class DeleteAdapter extends RecyclerView.Adapter<DeleteAdapter.ViewHolder
                                             @Override
                                             public void onFailure(Call<DeleteResponse> call, Throwable t) {
                                                 Toast.makeText(context, view.getContext().getString(R.string.msg_gagal), Toast.LENGTH_SHORT).show();
+                                                produkActivity.finish();
 
                                             }
                                         });

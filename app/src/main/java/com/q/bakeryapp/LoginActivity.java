@@ -2,11 +2,14 @@ package com.q.bakeryapp;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
+import android.Manifest;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -17,6 +20,8 @@ import com.google.android.material.textfield.TextInputLayout;
 import com.q.bakeryapp.connection.Client;
 import com.q.bakeryapp.connection.Service;
 import com.q.bakeryapp.model.login.LoginResponse;
+
+import org.jetbrains.annotations.NotNull;
 
 import java.util.Objects;
 
@@ -44,8 +49,31 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        ActivityCompat.requestPermissions(LoginActivity.this,
+                new String[]{Manifest.permission.INTERNET, Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE},
+                1);
+
         initComponents();
 
+    }
+    @Override
+    public void onRequestPermissionsResult(int requestCode,
+                                           @NotNull String[] permissions, @NotNull int[] grantResults) {
+        switch (requestCode) {
+            case 1: {
+
+                // If request is cancelled, the result arrays are empty.
+                if (grantResults.length > 0
+                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    //granted
+                } else {
+
+                    // Denied
+
+                }
+                return;
+            }
+        }
     }
     private void initComponents(){
         etEmail = findViewById(R.id.loginEtName);

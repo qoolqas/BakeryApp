@@ -52,6 +52,7 @@ public class Main2Activity extends AppCompatActivity {
                 return false;
             }
         });
+
     }
 
     @Override
