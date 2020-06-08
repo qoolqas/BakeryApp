@@ -27,14 +27,12 @@ import retrofit2.Response;
 public class RegisterActivity extends AppCompatActivity {
     TextInputLayout etNama, etAlamat, etEmail, etPassword;
     Button btnRegister;
-    SharedPrefManager sharedPrefManager;
     ProgressDialog loading;
     Context mContext = this;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-        sharedPrefManager = new SharedPrefManager(this);
         initComponents();
     }
 
@@ -52,10 +50,7 @@ public class RegisterActivity extends AppCompatActivity {
 
                     return;
                 }
-                Intent intent = new Intent(RegisterActivity.this, LoginActivity.class)
-                        .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
-                startActivity(intent);
-                finish();
+                register();
 
 
             }
