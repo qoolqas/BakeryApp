@@ -50,6 +50,7 @@ public class RegisterActivity extends AppCompatActivity {
 
                     return;
                 }
+                loading = ProgressDialog.show(mContext, null, "Harap Tunggu...", true, false);
                 register();
 
 
