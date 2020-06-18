@@ -24,7 +24,7 @@ public class DetailActivity extends AppCompatActivity {
     Button beli;
     ImageView image;
     RatingBar rating;
-    String ip = "192.168.1.9:8080";
+    String domain = "192.168.1.9:8080";
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -52,7 +52,7 @@ public class DetailActivity extends AppCompatActivity {
         deskripsi = findViewById(R.id.detail_deskripsi);
         rating = findViewById(R.id.detail_rating_star);
 
-        Glide.with(getApplicationContext()).load("http://"+ ip +"/roti/file/"+produkModel.getFoto()).into(image);
+        Glide.with(getApplicationContext()).load("http://"+ domain +"/roti/file/"+produkModel.getFoto()).into(image);
         name.setText(produkModel.getNama());
         rating.setRating(Float.parseFloat(produkModel.getRating()) / 2);
         tipe.setText("Kue " + produkModel.getKategori());

@@ -23,7 +23,7 @@ public class KeringAdapter extends RecyclerView.Adapter<KeringAdapter.ViewHolder
     private KeringFragment produkActivity;
     private Context context;
     private List<ProdukModel> list;
-    String ip = "192.168.1.9:8080";
+    String domain = "192.168.1.9:8080";
 
     public KeringAdapter(KeringFragment produkActivity, Context context) {
         this.produkActivity = produkActivity;
@@ -48,7 +48,7 @@ public class KeringAdapter extends RecyclerView.Adapter<KeringAdapter.ViewHolder
         holder.nama.setText(list.get(position).getNama());
         holder.harga.setText("RP " + list.get(position).getHarga());
         holder.rating.setRating(Float.parseFloat(list.get(position).getRating())/2);
-        Glide.with(context).load("http://"+ ip +"/roti/file/"+list.get(position).getFoto()).into(holder.photo);
+        Glide.with(context).load("http://"+ domain +"/roti/file/"+list.get(position).getFoto()).into(holder.photo);
 
     }
 
