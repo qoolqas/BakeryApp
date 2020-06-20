@@ -32,7 +32,7 @@ public class DeleteAdapter extends RecyclerView.Adapter<DeleteAdapter.ViewHolder
     private DeleteActivity produkActivity;
     private Context context;
     private List<ProdukModel> list;
-    String domain = "192.168.1.9:8080";
+    String domain = "192.168.1.4:8080";
 
     public DeleteAdapter(DeleteActivity produkActivity, Context context) {
         this.produkActivity = produkActivity;

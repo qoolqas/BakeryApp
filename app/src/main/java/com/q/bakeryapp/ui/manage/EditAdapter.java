@@ -24,7 +24,7 @@ public class EditAdapter extends RecyclerView.Adapter<EditAdapter.ViewHolder> {
     private EditActivity produkActivity;
     private Context context;
     private List<ProdukModel> list;
-    String domain = "192.168.1.9:8080";
+    String domain = "192.168.1.4:8080";
 
     public EditAdapter(EditActivity produkActivity, Context context) {
         this.produkActivity = produkActivity;

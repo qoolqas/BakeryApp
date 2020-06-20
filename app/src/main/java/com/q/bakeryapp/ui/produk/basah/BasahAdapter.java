@@ -26,7 +26,7 @@ public class BasahAdapter extends RecyclerView.Adapter<BasahAdapter.ViewHolder> 
     private BasahFragment produkActivity;
     private Context context;
     private List<ProdukModel> list;
-    String domain = "192.168.1.9:8080";
+    String domain = "192.168.1.4:8080";
 
 
     public BasahAdapter(BasahFragment produkActivity, Context context) {
