@@ -24,7 +24,7 @@ public class DetailActivity extends AppCompatActivity {
     Button beli;
     ImageView image;
     RatingBar rating;
-    String domain = "192.168.1.9:8080";
+    String domain = "192.168.1.4:8080";
 
     @SuppressLint("SetTextI18n")
     @Override

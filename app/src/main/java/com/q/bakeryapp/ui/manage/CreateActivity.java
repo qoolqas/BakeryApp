@@ -57,7 +57,7 @@ public class CreateActivity extends AppCompatActivity {
     RadioButton basah, kering;
     Uri fileUri;
     public ProgressDialog pDialog;
-    String domain = "192.168.1.9:8080";
+    String domain = "192.168.1.4:8080";
 
     @SuppressLint("SetTextI18n")
     @Override

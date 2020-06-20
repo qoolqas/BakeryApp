@@ -31,6 +31,7 @@
             </View>
 
             <TextView
+                android:id="@+id/appname"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="16dp"
@@ -40,6 +41,17 @@
                 android:textColor="#fff"
                 android:textSize="30sp"
                 android:textStyle="bold" />
+            <TextView
+                android:id="@+id/namaUser"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_below="@+id/appname"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="16dp"
+                android:text="Tester"
+                android:textColor="#fff"
+                android:textSize="24sp"/>
 
 
 
