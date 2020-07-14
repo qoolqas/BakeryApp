@@ -34,7 +34,6 @@ import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
 import java.io.FileOutputStream;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
@@ -57,7 +56,7 @@ public class CreateActivity extends AppCompatActivity {
     RadioButton basah, kering;
     Uri fileUri;
     public ProgressDialog pDialog;
-    String domain = "192.168.1.4:8080";
+    String domain = "192.168.1.5:8080";
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -309,7 +308,7 @@ public class CreateActivity extends AppCompatActivity {
                             if (response.body() != null) {
                                 hidepDialog();
                                 Toast.makeText(getApplicationContext(), getString(R.string.msg_success), Toast.LENGTH_SHORT).show();
-                                Intent intent = new Intent(CreateActivity.this, EditActivity.class);
+                                Intent intent = new Intent(CreateActivity.this, EditRvActivity.class);
                                 startActivity(intent);
                                 finish();
 
@@ -359,7 +358,7 @@ public class CreateActivity extends AppCompatActivity {
                             if (response.body() != null) {
                                 hidepDialog();
                                 Toast.makeText(getApplicationContext(), getString(R.string.msg_success), Toast.LENGTH_SHORT).show();
-                                Intent intent = new Intent(CreateActivity.this, EditActivity.class);
+                                Intent intent = new Intent(CreateActivity.this, EditRvActivity.class);
                                 startActivity(intent);
                                 finish();
 

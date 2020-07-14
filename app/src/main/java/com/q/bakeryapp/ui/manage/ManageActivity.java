@@ -30,7 +30,7 @@ public class ManageActivity extends AppCompatActivity {
         cardEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(ManageActivity.this, EditActivity.class);
+                Intent intent = new Intent(ManageActivity.this, EditRvActivity.class);
                 startActivity(intent);
             }
         });

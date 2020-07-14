@@ -21,12 +21,12 @@ import com.q.bakeryapp.model.produk.ProdukModel;
 import java.util.List;
 
 public class EditAdapter extends RecyclerView.Adapter<EditAdapter.ViewHolder> {
-    private EditActivity produkActivity;
+    private EditRvActivity produkActivity;
     private Context context;
     private List<ProdukModel> list;
-    String domain = "192.168.1.4:8080";
+    String domain = "192.168.1.5:8080";
 
-    public EditAdapter(EditActivity produkActivity, Context context) {
+    public EditAdapter(EditRvActivity produkActivity, Context context) {
         this.produkActivity = produkActivity;
         this.context = context;
     }
